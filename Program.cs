@@ -1,36 +1,45 @@
-﻿
-List<int> numbers = new List<int>();
-int usernumber = -1;
-while (usernumber != 0)
+﻿using System;
+namespace cse210_tictactoe
 {
-    Console.Write("Enter a number (0 to quit): ");
-    string response = Console.ReadLine();
-    usernumber = int.Parse(response);
-    numbers.Add(usernumber);
-}
-int sum = 0;
-foreach (int number in numbers)
-{
-    sum += number;
-}
-Console.WriteLine($"The sum is: {sum}");
-
-float average = ((float)sum) / numbers.Count;
-Console.WriteLine($"The average is: {average}");
-
-int max = numbers[0];
-
-foreach (int number in numbers)
-{
-    if (number > max)
+    class Program
     {
-        max = number;
-    }
-}
-Console.WriteLine($"The max is: {max}");
+        static void Main(string[] args)
+        {
+            List<string> board = NewBoard();
+            ShowBoard(board);
 
-Console.WriteLine("This is a list of all the numbers: ");
-foreach (int coso in numbers)
-{
-    Console.WriteLine(coso);
+
+
+
+
+
+        
+
+
+        }
+        static List<string> NewBoard()
+        {
+            List<string> board = new List<string>();
+
+            for (int i = 1; i < 10; i = i+1)
+            {
+                board.Add(i.ToString());
+            }
+
+            return board;
+        }
+        static void ShowBoard(List<string> board)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            // This could be done more elegantly using loops and if statements
+            // especially if something besides 3x3 was ever anticipated.
+            Console.WriteLine($"  {board[0]} |  {board[1]}  | {board[2]}");
+            Console.WriteLine("----+-----+----");
+            Console.WriteLine($"  {board[3]} |  {board[4]}  | {board[5]}");
+            Console.WriteLine("----+-----+----");
+            Console.WriteLine($"  {board[6]} |  {board[7]}  | {board[8]}");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+    }
 }
