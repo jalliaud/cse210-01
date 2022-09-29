@@ -13,6 +13,7 @@ namespace DiceGame
 
         public Director()
         {
+
             for (int i = 0; i < 5; i++)
             {
                 Die die = new Die();
@@ -22,7 +23,8 @@ namespace DiceGame
 
         public void StartGame()
         {
-            while (isPlaying)
+            
+            while (isPlaying==true)
             {
                 GetInputs();
                 DoUpdates();
@@ -62,7 +64,11 @@ namespace DiceGame
             
             Console.WriteLine($"You rolled {values}");
             Console.WriteLine($"Your score is: {totalScore}");
-            isPlaying = (score > 0);
+            if(score == 0)
+                {
+                    isPlaying = false;
+                }
+            score = 0;                
         }
     }
 }
